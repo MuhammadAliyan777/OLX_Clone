@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: #f7f8f8;
+}
+.profile-ul{
+    width: 300px;
+}
+.profile-ul li{
+    line-height: 40px;
+}
+.profile-ul li a{
+    font-size: 18px;
+}
+.profile-ul li a i{
+    padding: 0px 10px 0 0px;
+}
+.profile_img{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.notifications{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notifications i{
+    font-size: 25px;
+    cursor: pointer;
+}
+.notifi{
+    height: 270px;
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ittems{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+.ittems p{
+    line-height: 4px;
+    cursor: pointer;
+}
+.ittems h5{
+    line-height: 7px;
+    cursor: pointer;
+}
+.ittems small{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.responsive_btn{
+    display: none;
+}
+main{
+    margin-top: 167px;
+}
+.banner{
+    width: 100%;
+    height: 15rem;
+    background: url(../images/banner.jpg.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size:auto;
+}
+.colr a{
+    color: #002f34;
+}
+
+.lastDiv{
+    background-color: #ebeeef;
+}
+.lastDiv ul{
+    list-style: none;
+}
+.lastDiv ul li{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #5b5c5c;
+    font-size: 0.9em;
+    line-height: 26px;
+}
+footer{
+    background-color: #002f34;
+
+}
+footer h6{
+    color: #f7f8f8;
+}
+.wop{
+    width: 50%;
+}
+
+/* ----------Media Queries---------- */
+@media only screen and (max-width: 1010px) {
+.colr{
+    display: none;
+}
+main{
+    margin-top: 200px;
+}
+}
+@media only screen and (max-width: 767px) {
+    .search1{
+        display: none !important;
+    }
+    .banner{
+        display: none;
+    }
+    .responsive_btn{
+        display: block;
+    }
+    footer h6{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .inP0{
+        padding: 0!important;
+    }
+    .inP0 h4{
+        font-size: 17px;
+    }
+    .inP0 p{
+        font-size: 12px;
+    }
+    .inP2 h5{
+        font-size: 15px;
+    }
+    .inP2 small{
+        font-size: 10px;
+    }
+    .inP2{
+        padding: 0 2px !important;
+    }
+    .inp1{
+        padding: 0 4px;
+    }
+    .wop{
+        width: 90% !important;
+    }
+}
+@media only screen and (max-width: 343px) {
+    .firstAnchor{
+        font-size: small !important;
+    }
+    .secondAnchor{
+        font-size: small !important;
+    }
+    .thirdAnchor{
+        font-size: small;
+    }
+    .span-butn{
+        padding: 4px 4px !important;
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width: 297px) {
+    .firstAnchor{
+        padding: 10px 0px;
+        font-size: small !important;
+    }
+    .secondAnchor{
+        font-size: small !important;
+    }
+    .thirdAnchor{
+        font-size: small;
+    }
+}
