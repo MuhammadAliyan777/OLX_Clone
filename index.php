@@ -424,9 +424,31 @@ include 'assests/php/_dbconnect.php';
 
                 <div class="row inp1">
                     <?php
+
+
                     // include "assests/php/_dbconnect.php";
                     $sql = "SELECT * FROM `ad`";
                     $result = mysqli_query($conn, $sql);
+
+                    $user_id = $_SESSION['user_id'];
+                    if(isset($_POST['add_to_cart'])){
+                       
+                        $product_name = $_POST['product_name'];
+                        $product_price = $_POST['product_price'];
+                        $product_image = $_POST['product_image'];
+                        $product_quantity = $_POST['product_quantity'];
+                     
+                        $check_cart_numbers = "SELECT * FROM `cart` WHERE name = '$product_name' AND user_id = '$user_id'" or die('query failed');
+                        $res = mysqli_query($conn,$check_cart_numbers);
+                        if(mysqli_num_rows($res) > 0){
+                          echo 'already added to cart!';
+                        }else{
+                           $sql = "INSERT INTO `cart`(user_id, name, price, quantity, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')" or die('query failed');
+                           $res = mysqli_query($conn,$sql);
+                           echo 'product added to cart!';
+                        }
+                     
+                     }
                     while ($row = mysqli_fetch_assoc($result)) {
                         // $category_id = $row['category_id'];
                         // $category = $row['category_name'];
@@ -436,7 +458,9 @@ include 'assests/php/_dbconnect.php';
                         $image = $row['ad_image'];
                         $added_on = $row['added_on'];
 
-                        echo '<div class="col-lg-3 col-md-4 col-sm-6 col-6 my-3 inP2">
+                        echo '
+                        <form method = "POST">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6 my-3 inP2">
         <div class="card rounded" style="width: 100%; cursor: pointer;" ><a href="assests/php/_detail.php?detailid=' . $row['ad_id'] . '">
             <img src="assests/images/';
                         echo $row['ad_image'];
@@ -448,6 +472,7 @@ include 'assests/php/_dbconnect.php';
                     <h4>' . $title . '</h4>
                         <p class="card-text">' . $description . '</p>
                         </a>
+                     
                     </div>
                     <div class="col-lg-2 col-2 inP0">
                         <div class="heart float-end">
@@ -457,12 +482,21 @@ include 'assests/php/_dbconnect.php';
                 </div>
                 <a href="assests/php/_detail.php?detailid=' . $row['ad_id'] . '">
                 <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+               
                 <h5 class="card-title pt-3 pb-2">' . $price . '</h5>
+                
                 <small class="text-secondary">Nazimabad, Karachi . ' . $added_on . '</small>
                 </a>
+                <br>
+                <input type="number" min="1" name="product_quantity" value="1" class="form-control">
+                <input type="hidden" name="product_name" value="'.$row['ad_title'].'">
+                <input type="hidden" name="product_price" value="'.$row['ad_price'].'">
+                <input type="hidden" name="product_image" value="'.$row['ad_image'].'"><br><br>
+                <input type="submit" value="add to cart" name="add_to_cart" class="btn btn-outline-dark">
             </div>
         </div>
-    </div>';
+    </div>
+    </form>';
                     }
                     ?>
                 </div>
